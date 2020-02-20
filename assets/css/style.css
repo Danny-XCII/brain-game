@@ -5,6 +5,7 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Dark/Light Mode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #2c2c54;
@@ -17,12 +18,17 @@
   .blue, .red, .green, .yellow, .black {
     color: #3498db !important;
   }
+
+  .high-scores table thead td {
+    color: #fff;
+  }
 }
 @media (prefers-color-scheme: light) {
   body {
     background-color: rgba(112, 111, 211, 0.15);
   }
 }
+/* Large display */
 @media only screen and (min-width: 900px) {
   body {
     width: 800px;
@@ -32,6 +38,9 @@
   body header {
     padding: 0;
   }
+  body header h1 {
+    text-align: left;
+  }
   body header,
 body main {
     width: 50%;
@@ -39,6 +48,9 @@ body main {
 }
 header {
   padding: 1.5rem 0;
+}
+header h1 {
+  font-size: 3rem;
 }
 header p {
   font-size: 0.9rem;
@@ -106,6 +118,30 @@ header p {
 #ui #required-color span.scored {
   padding: 0.35rem 0;
   display: block;
+}
+
+.high-scores {
+  width: 300px;
+}
+.high-scores table {
+  width: 100%;
+  display: table;
+}
+.high-scores table tr td {
+  padding: 5px;
+}
+.high-scores table tr td:nth-of-type(2) {
+  text-align: center;
+}
+.high-scores table tr td:nth-of-type(3) {
+  text-align: center;
+}
+.high-scores table thead td {
+  background-color: rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+}
+.high-scores table tbody tr td {
+  background-color: #ebebeb;
 }
 
 #game > div:nth-of-type(4),

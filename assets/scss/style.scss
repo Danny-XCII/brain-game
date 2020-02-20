@@ -1,16 +1,19 @@
 @import "reset";
 @import "settings";
 
+/* Dark/Light Mode */
 @media ( prefers-color-scheme: dark ) {
   body { background-color: rgba( 44, 44, 84, 1.0 ); }
   h1, p, span.correct, span.incorrect, span.scored, #required-color { color: #fff; }
   .blue, .red, .green, .yellow, .black { color: #3498db !important; }
+  .high-scores { table { thead { td { color: #fff; } } } }
 }
 
 @media ( prefers-color-scheme: light ) {
   body { background-color: rgba( 112, 111, 211, 0.15 ); }
 }
 
+/* Large display */
 @media only screen and (min-width: 900px) {
   body {
     width: 800px;
@@ -19,6 +22,10 @@
 
     header {
       padding: 0;
+
+      h1 {
+        text-align: left;
+      }
     }
 
     header,
@@ -27,8 +34,13 @@
     }
   }
 }
+
 header {
   padding: 1.5rem 0;
+
+  h1 {
+    font-size: 3rem;
+  }
 
   p {
     font-size: .9rem;
@@ -101,6 +113,44 @@ header {
     span.scored {
       padding: .35rem 0;
       display: block;
+    }
+  }
+}
+
+.high-scores {
+  width: 300px;
+
+  table {
+    width: 100%;
+    display: table;
+
+    tr {
+      td {
+        padding: 5px;
+
+        &:nth-of-type( 2 ) {
+          text-align: center;
+        }
+
+        &:nth-of-type( 3 ) {
+          text-align: center;
+        }
+      }
+    }
+
+    thead {
+      td {
+        background-color: $uiBgColor;
+        font-weight: 600;
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          background-color: #ebebeb;
+        }
+      }
     }
   }
 }
