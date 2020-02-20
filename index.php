@@ -156,4 +156,13 @@
 
     </div>
 
+    <div id="my-vog"></div>
+
+    <script src="https://tools.winningweb.co.uk/view-on-github/ViewOnGithub.js"></script>
+    <script>
+        new ViewOnGithub( "my-vog", "Danny-XCII", "brain-game" );
+    </script>
+
+    <style>#my-vog img { color: #fff; }</style>
+
 </main>
