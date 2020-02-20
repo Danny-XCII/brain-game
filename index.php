@@ -3,6 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+<div class="error-bar"></div>
+
 <header style="text-align: center; width: 300px; margin: 0 auto;">
 
     <h1><span class="blue">B</span><span class="green">r</span><span class="black">a</span><span class="yellow">i</span><span class="red">n</span> Game</h1>
@@ -11,37 +13,9 @@
 
     <p>Of the five available coloured tiles, you'll be asked to remember the location of one of them. Simply click the tile you think contains the required colour - try to score as many points as you can!</p>
 
-    <div class="high-scores">
+    <div class="high-scores" id="high-score-container">
 
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <td>#</td>
-                    <td>Player</td>
-                    <td>Points</td>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <?php
-
-                for ( $i = 0; $i < 10; $i++ ) {
-
-                    echo "<tr><td>" . ( $i + 1 ) . "</td><td>Danny</td><td>10</td></tr>";
-
-                }
-
-                ?>
-
-            </tbody>
-
-        </table>
+        <?php include "high-scores.php"; ?>
 
     </div>
 

@@ -143,6 +143,10 @@ header p {
 .high-scores table tbody tr td {
   background-color: #ebebeb;
 }
+.high-scores table tbody tr td img {
+  width: 22px;
+  height: auto;
+}
 
 #game > div:nth-of-type(4),
 #game > div:nth-of-type(8),
@@ -175,6 +179,24 @@ header p {
 #start-button:hover {
   color: #fff;
   background-color: #4a69bd;
+}
+
+.error-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  transition: opacity 0.5s linear;
+  opacity: 0;
+}
+.error-bar#eb-success {
+  background-color: #16a085;
+}
+.error-bar#eb-error {
+  background-color: #e74c3c;
 }
 
 #button-text {

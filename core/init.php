@@ -24,7 +24,7 @@ class Database {
 
         try {
 
-            $query = $this->pdo->prepare( "select * from `highscores` order_by desc limit 10;" );
+            $query = $this->pdo->prepare( "select * from `highscores` order by `score` desc limit 10;" );
             $query->execute();
 
             return $query->fetchAll( PDO::FETCH_CLASS );
@@ -36,6 +36,47 @@ class Database {
         }
 
     }
+
+    public function addHighScore( $player, $score ) {
+
+        try {
+
+            $query = $this->pdo->prepare( "insert into `highscores` ( `player`, `score` ) values ( :player, :score );" );
+            $query->bindParam( ":player", $player );
+            $query->bindParam( ":score", $score );
+            $query->execute();
+
+        } catch ( PDOException $e ) {
+
+            die( "Could not add the high score to the database: " . $e->getMessage() );
+
+        }
+
+    }
+
+}
+
+function getPosition( $i ) {
+
+    if ( ( $i + 1 ) == 1 ) {
+
+        $position = "<img src='assets/imgs/trophy-1.svg'>";
+
+    } elseif ( ( $i + 1 ) == 2 ) {
+
+        $position = "<img src='assets/imgs/trophy-2.svg'>";
+
+    } elseif ( ( $i + 1 ) == 3 ) {
+
+        $position = "<img src='assets/imgs/trophy-3.svg'>";
+
+    } else {
+
+        $position = $i + 1;
+
+    }
+
+    return $position;
 
 }
 

@@ -94,9 +94,52 @@ function isCorrect( e ) {
 
             }
 
+            if ( score > lowestHighScore ) {
+
+                console.log( "New high score!" );
+                requiredColor.innerHTML = "<span class='scored'>You scored: " + score + "</span><span class='incorrect'>You got a new high score!</span><span class='incorrect'><form enctype='multipart/form-data' id='high-score-form' method='post'><input type='hidden' name='score' value='" + score + "'><input type='text' name='player' value='Player'><input type='submit' value='Submit Score'></form></span>";
+
+                document.getElementById( "high-score-form" ).addEventListener( "submit", function( e ) {
+
+                    e.preventDefault();
+                    console.log( "Submitted!" );
+                    let formData = new FormData( document.getElementById( "high-score-form" ) );
+                    let xhr = new XMLHttpRequest();
+                    let body = document.querySelector( "body" );
+
+                    xhr.onreadystatechange = function() {
+
+                        if ( this.readyState == 4 && this.status == 200 ) {
+
+                            if ( this.responseText == "true" ) {
+
+                                notify( "Added your high score!", "eb-success" );
+                                refreshLeaderboard();
+                                document.getElementById( "high-score-form" ).style.display = "none";
+
+                            } else {
+
+                                notify( "Your chosen name must be fewer than 7 characters and cannot be empty.", "eb-error" );
+
+                            }
+
+                        }
+
+                    }
+
+                    xhr.open( "POST", "add-high-score.php" );
+                    xhr.send( formData );
+
+                });
+
+            } else {
+
+                requiredColor.innerHTML = "<span class='incorrect'>Sorry, better luck next time!</span><span class='scored'>You scored: " + score + "</span>";
+
+            }
+
             startButton.innerHTML = "New Game";
             startButton.parentElement.style.display = "inline-block";
-            requiredColor.innerHTML = "<span class='incorrect'>Sorry, better luck next time!</span><span class='scored'>You scored: " + score + "</span>";
             score = 0;
             scoreBoard.innerHTML = score;
             inPlay = false;
@@ -108,5 +151,40 @@ function isCorrect( e ) {
         console.log( "Not currently in play!" );
 
     }
+
+}
+
+function notify( message, errorType ) {
+
+    let errorBar = document.querySelector( ".error-bar" );
+    errorBar.id = errorType;
+    errorBar.innerHTML = message;
+    errorBar.style.opacity = "1";
+
+    setTimeout( function() {
+
+        errorBar.style.opacity = "0";
+
+    }, 3000 );
+
+}
+
+function refreshLeaderboard() {
+
+    let highScoreDiv = document.getElementById( "high-score-container" );
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+
+        if ( this.readyState == 4 && this.status == 200 ) {
+
+            highScoreDiv.innerHTML = this.responseText;
+
+        }
+
+    }
+
+    xhr.open( "GET", "high-scores.php" );
+    xhr.send();
 
 }

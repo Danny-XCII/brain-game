@@ -149,6 +149,11 @@ header {
       tr {
         td {
           background-color: #ebebeb;
+
+          img {
+            width: 22px;
+            height: auto;
+          }
         }
       }
     }
@@ -186,6 +191,26 @@ header {
   &:hover {
     color: #fff;
     background-color: $buttonBlue;
+  }
+}
+
+.error-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  transition: opacity .5s linear;
+  opacity: 0;
+
+  &#eb-success {
+    background-color: #16a085;
+  }
+
+  &#eb-error {
+    background-color: #e74c3c;
   }
 }
 
