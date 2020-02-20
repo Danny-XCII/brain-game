@@ -160,7 +160,7 @@
 
     <script src="https://tools.winningweb.co.uk/view-on-github/ViewOnGithub.js"></script>
     <script>
-        new ViewOnGithub( "my-vog", "Danny-XCII", "brain-game" );
+        new ViewOnGithub( "my-vog", "Danny-XCII", "brain-game", "purple" );
     </script>
 
     <style>#my-vog img { color: #fff; }</style>
